@@ -24,9 +24,28 @@ class Game {
 
 
   /**
+  * Resets all the game's HTML parts.
   * Begins game by selecting a random phrase and displaying it to user
   */
   startGame() {
+    const phraseDiv = document.getElementById('phrase');
+    const ul = phraseDiv.querySelector('ul');
+    ul.innerHTML = '';
+
+    const buttons = document.querySelectorAll('button.key');
+    for(let i = 0; i < buttons.length; i++) {
+      buttons[i].removeAttribute('disabled');
+      buttons[i].classList.remove('wrong');
+      buttons[i].classList.remove('chosen');
+    }
+
+    const hearts = document.querySelectorAll('img[src="images/lostHeart.png"]')
+    if(hearts){
+      for(let i = 0; i < hearts.length; i++) {
+        hearts[i].src = 'images/liveHeart.png';
+      }
+    }
+
     document.getElementById('overlay').style.display = 'none';
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
@@ -77,6 +96,28 @@ class Game {
       message = "Better Luck Next Time!"
     }
     document.querySelector('h1').textContent = message;
+  };
+
+
+  /**
+  * Handles onscreen keyboard button clicks
+  * @param (HTMLButtonElement) button - The clicked button element
+  */
+  handleInteraction(button) {
+    button.disabled = true;
+    let guess = button.textContent;
+    let match = this.activePhrase.checkLetter(guess);
+
+    if(!match){
+      button.classList.add('wrong');
+      this.removeLife();
+    } else {
+      button.classList.add('chosen');
+      this.activePhrase.showMatchedLetter(guess);
+      if(this.checkForWin()) {
+        this.gameOver(true);
+      }
+    }
   };
 
 }
