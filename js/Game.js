@@ -24,10 +24,9 @@ class Game {
 
 
   /**
-  * Resets all the game's HTML parts.
-  * Begins game by selecting a random phrase and displaying it to user
-  */
-  startGame() {
+   * Resets all the game's HTML parts.
+   */
+  resetGame() {
     const phraseDiv = document.getElementById('phrase');
     const ul = phraseDiv.querySelector('ul');
     ul.innerHTML = '';
@@ -45,7 +44,14 @@ class Game {
         hearts[i].src = 'images/liveHeart.png';
       }
     }
+  }
 
+
+  /**
+  * Begins game by selecting a random phrase and displaying it to user
+  */
+  startGame() {
+    this.resetGame();
     document.getElementById('overlay').style.display = 'none';
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
