@@ -1,4 +1,5 @@
-/* Treehouse FSJS Techdegree
+/* Cassia Nebel's
+ * Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
 
@@ -24,7 +25,10 @@ class Game {
 
 
   /**
-   * Resets all the game's HTML parts.
+   * Resets all the game's HTML parts:
+   * empties the phrase ul of li's,
+   * re-enables all the letter buttons,
+   * resets the hearts.
    */
   resetGame() {
     const phraseDiv = document.getElementById('phrase');
@@ -48,7 +52,8 @@ class Game {
 
 
   /**
-  * Begins game by selecting a random phrase and displaying it to user
+  * Begins game by selecting a random phrase and displaying 
+  * the blank spaces for it on screen
   */
   startGame() {
     this.resetGame();
@@ -59,7 +64,7 @@ class Game {
 
 
   /**
-  * Checks for winning move
+  * Checks for winning move - no hidden letters left
   * @return {boolean} True if game has been won, false if game wasn't
   won
   */
@@ -84,7 +89,7 @@ class Game {
 
 
   /**
-  * Displays game over message
+  * Displays win/lose game over message
   * @param {boolean} gameWon - Whether or not the user won the game
   */
   gameOver(gameWon) {
@@ -107,7 +112,7 @@ class Game {
 
   /**
   * Handles onscreen keyboard button clicks
-  * @param (HTMLButtonElement) button - The clicked button element
+  * @param {HTMLButtonElement} button - The clicked button element
   */
   handleInteraction(button) {
     button.disabled = true;

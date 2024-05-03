@@ -1,4 +1,5 @@
-/* Treehouse FSJS Techdegree
+/* Cassia Nebel's
+ * Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Phrase.js */
 
@@ -8,7 +9,7 @@ class Phrase {
   }
 
   /**
-  * Display phrase on game board
+  * Display phrase's blank spaces on the game board
   */
   addPhraseToDisplay() {
     const phraseDiv = document.getElementById('phrase');
@@ -29,7 +30,7 @@ class Phrase {
 
 
   /**
-  * Checks if passed letter is in phrase
+  * Checks if passed letter is in the phrase
   * @param (string) letter - Letter to check
   */
   checkLetter(letter) {
@@ -38,7 +39,7 @@ class Phrase {
 
 
   /**
-  * Displays passed letter on screen after a match is found
+  * Displays passed letter in the phrase spaces on screen after a match is found
   * @param (string) letter - Letter to display
   */
   showMatchedLetter(letter) {
