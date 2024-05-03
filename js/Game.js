@@ -7,7 +7,7 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = [new Phrase('A DIAMOND IN THE ROUGH'), 
-                    new Phrase('A WALK IN THE THE PARK'), 
+                    new Phrase('A WALK IN THE PARK'), 
                     new Phrase('BETTER LATE THAN NEVER'),  
                     new Phrase('BETTER SAFE THAN SORRY'),  
                     new Phrase('GET ALL YOUR DUCKS IN A ROW'),  ];

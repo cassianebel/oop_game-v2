@@ -15,7 +15,7 @@ document.getElementById('btn__reset').addEventListener('click', () => {
 
 
 /**
- * Listens for letter button clicks
+ * Listens for on-screen letter button clicks
  */
 const buttons = document.querySelectorAll('button.key');
 for(let i = 0; i < buttons.length; i++) {
@@ -23,3 +23,19 @@ for(let i = 0; i < buttons.length; i++) {
     game.handleInteraction(e.target);
   });
 }
+
+
+/**
+ * Give on-screen keys ids, so they can be handled by physical keyboard clicks
+ */
+let screenKeys = document.querySelectorAll('.key');
+for(let i = 0; i < screenKeys.length; i++){
+  screenKeys[i].id = screenKeys[i].textContent;
+}
+/**
+ * Listens for physical keyboard button clicks
+ */
+document.addEventListener('keyup', (e) => {
+  let button = document.getElementById(e.key);
+  game.handleInteraction(button);
+});
