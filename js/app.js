@@ -39,3 +39,28 @@ document.addEventListener('keyup', (e) => {
   let button = document.getElementById(e.key);
   game.handleInteraction(button);
 });
+
+
+/**
+ * Adapted from https://animate.style/
+ * Helper function to add animation classes to elements
+ * and then automatically remove the classes after the animation ends.
+ * 
+ * @param {*} node - The html element to animate
+ * @param {*} animation - The name of the animation
+ * @param {*} prefix - The prefix for the animation
+ */
+const animateCSS = (node, animation, prefix = 'animate__') =>
+  new Promise((resolve, reject) => {
+    const animationName = `${prefix}${animation}`;
+
+    node.classList.add(`${prefix}animated`, animationName);
+    
+    function handleAnimationEnd(event) {
+      event.stopPropagation();
+      node.classList.remove(`${prefix}animated`, animationName);
+      resolve('Animation ended');
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd, {once: true});
+  });

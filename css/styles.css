@@ -4,8 +4,8 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-win: #7AE582;
+  --color-lose: #FF6B6C;
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: #000;
 }
 
 li, ol, ul {
@@ -40,19 +41,23 @@ h2 {
   text-transform: uppercase;
   font-size: var(--font-size-large);
   margin: 0;
+  color: #FFF;
+  font-weight: 900;
+  font-style: italic;
 }
 
 h1 {
   font-size: 30px;
+  color: #000;
 }
 
 button {
   margin: 6px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: .5rem 1rem;
-  color: var(--color-keys);
+  color: #fff;
   font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
+  background-color: #000;
   border-radius: 5px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
@@ -60,9 +65,23 @@ button {
   cursor: pointer;
 }
 
+button:not([disabled]):hover,
+button:not([disabled]):focus,
+button:not([disabled]):active {
+  border: 2px solid #000;
+}
+
 #btn__reset {
 	width: 200px;
-	margin: 0 auto;
+	margin: 12px auto;
+  background-color: #000;
+  border-radius: 22px;
+}
+
+#btn__reset:hover,
+#btn__reset:focus,
+#btn__reset:active {
+  border: 2px solid #FFF;
 }
 
 .main-container {
@@ -83,12 +102,6 @@ button {
   margin-top: 15px;
 }
 
-/* Title */
-
-.header {
-  color: #3a3f58;
-}
-
 
 /* Phrase */
 
@@ -96,30 +109,36 @@ button {
   font-size: var(--font-size-medium);
   height: 65px;
   width: 65px;
-  padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
 }
 
 .space {
   width: 15px;
 }
 
-
-
 .show {
-  color: #fff;
-  background-color: #4ac0d5;
-  font-size: 20px;
+  color: #000;
+  background-color: #7AE582;
   height: 65px;
   width: 65px;
-  padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
+  box-shadow: inset 0px 0px 22px -4px rgba(0,0,0,0.6);
+}
+
+.animate__tada {
+  box-shadow: -1px 10px 22px -4px rgba(0,0,0,0.6);
 }
 
 
@@ -130,16 +149,28 @@ button {
   justify-content: center;
 }
 
-.chosen {
-  background: #3a3f58;
-  border-radius: 5px;
-  font-size: var(--font-size-medium);
-  color: #FFFFFF;
+button.key {
+  background-color: #88498F;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
 }
 
-.wrong {
-  background: #f7a964;
-  color: #FFFFFF;
+button.chosen {
+  background-color: #E5E5E5;
+  border-radius: 5px;
+  font-size: var(--font-size-medium);
+  color: #595959;
+}
+
+button.wrong {
+  background-color: #FFA552;
+  color: #3a3f58;
+  border-radius: 5px;
 }
 
 .btn__reset {
@@ -160,6 +191,13 @@ button {
 }
 
 
+/* Tries/Hearts */
+
+li.tries {
+  margin: 0 6px;
+}
+
+
 /* Overlay */
 
 #overlay {
@@ -175,12 +213,35 @@ button {
   border-radius: 5px;
 }
 
-.title {
-  color: #FFF;
+#overlay h2 {
+  color: #000;
 }
 
 .start {
-  background-color: #3a3f58;
+  background: linear-gradient(270deg, #ff6b6c, #ffa552, #7ae582, #4d86bf, #88498f );
+  background-size: 1000% 1000%;
+
+  -webkit-animation: bgPosition 30s ease infinite;
+  -moz-animation: bgPosition 30s ease infinite;
+  animation: bgPosition 30s ease infinite;
+}
+
+/* animated gradient background from https://www.gradient-animator.com/ */
+
+@-webkit-keyframes bgPosition {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes bgPosition {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes bgPosition {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 .start a {
@@ -196,7 +257,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: var(--color-lose);
 }
 
 .lose a {

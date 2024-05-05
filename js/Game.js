@@ -10,7 +10,7 @@ class Game {
                     new Phrase('A WALK IN THE PARK'), 
                     new Phrase('BETTER LATE THAN NEVER'),  
                     new Phrase('BETTER SAFE THAN SORRY'),  
-                    new Phrase('GET ALL YOUR DUCKS IN A ROW'),  ];
+                    new Phrase('LABOR OF LOVE'),  ];
     this.activePhrase = null;
   }
 
@@ -38,15 +38,14 @@ class Game {
     const buttons = document.querySelectorAll('button.key');
     for(let i = 0; i < buttons.length; i++) {
       buttons[i].removeAttribute('disabled');
-      buttons[i].classList.remove('wrong');
-      buttons[i].classList.remove('chosen');
+      buttons[i].classList.remove('wrong', 'chosen');
     }
 
     const hearts = document.querySelectorAll('img[src="images/lostHeart.png"]')
     if(hearts){
-      for(let i = 0; i < hearts.length; i++) {
-        hearts[i].src = 'images/liveHeart.png';
-      }
+      hearts.forEach((heart) => {
+        heart.src = 'images/liveHeart.png';
+      });
     }
   }
 
@@ -60,6 +59,13 @@ class Game {
     document.getElementById('overlay').style.display = 'none';
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
+
+    const hearts = document.querySelectorAll('img[src="images/liveHeart.png"]')
+    hearts.forEach((heart) => {
+      setTimeout(() => {
+        animateCSS(heart, 'heartBeat');
+      }, 500);
+    });
   };
 
 
@@ -93,20 +99,26 @@ class Game {
   * @param {boolean} gameWon - Whether or not the user won the game
   */
   gameOver(gameWon) {
-    let message;
-    const overlay = document.getElementById('overlay');
-    overlay.style.display = 'block';
-    overlay.classList.remove('start');
-    if(gameWon){
-      overlay.classList.remove('lose');
-      overlay.classList.add('win');
-      message = "Nice Work, You Won!";
-    } else {
-      overlay.classList.remove('win');
-      overlay.classList.add('lose');
-      message = "Better Luck Next Time!"
-    }
-    document.querySelector('h1').textContent = message;
+    setTimeout(() => {
+      let message;
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'flex';
+      overlay.classList.remove('start');
+      if(gameWon){
+        overlay.classList.remove('lose');
+        overlay.classList.add('win');
+        message = "Nice Work, You Won!";
+      } else {
+        overlay.classList.remove('win');
+        overlay.classList.add('lose');
+        message = "Better Luck Next Time!"
+      }
+      const h1 = document.querySelector('h1');
+      h1.textContent = message;
+      animateCSS(h1, 'flipInX');
+      this.resetGame();
+    }, 2000);
+    
   };
 
 
@@ -121,6 +133,7 @@ class Game {
 
     if(!match){
       button.classList.add('wrong');
+      animateCSS(button, 'headShake');
       this.removeLife();
     } else {
       button.classList.add('chosen');

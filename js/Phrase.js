@@ -47,6 +47,7 @@ class Phrase {
     letters.forEach((li) => {
       li.classList.remove('hide');
       li.classList.add('show');
+      animateCSS(li, 'tada');
     });
   };
 
