@@ -29,6 +29,7 @@ body {
   display: flex;
   height: 100vh;
   background-color: #000;
+  font-weight: 400;
 }
 
 li, ol, ul {
@@ -49,6 +50,7 @@ h2 {
 h1 {
   font-size: 30px;
   color: #000;
+  font-weight: 600;
 }
 
 button {
@@ -68,7 +70,7 @@ button {
 button:not([disabled]):hover,
 button:not([disabled]):focus,
 button:not([disabled]):active {
-  border: 2px solid #000;
+  border: 2px solid #FFF;
 }
 
 #btn__reset {
@@ -173,23 +175,6 @@ button.wrong {
   border-radius: 5px;
 }
 
-.btn__reset {
-  padding: 16px;
-  margin: 50px auto;
-  background: #f7a964;
-  border-radius: 5px;
-  font-size: 20px;
-  cursor: pointer;
-  border-bottom: solid 4px rgba(0, 0, 0, .3);
-  border-right: solid 3px rgba(0, 0, 0, .3)
-}
-
-.btn__reset:active {
-  padding: 14px 16px 16px 14px;
-  border-bottom: solid 4px rgba(0, 0, 0, 0);
-  border-right: solid 3px rgba(0, 0, 0, 0);
-}
-
 
 /* Tries/Hearts */
 
@@ -244,22 +229,11 @@ li.tries {
   100%{background-position:0% 50%}
 }
 
-.start a {
-  color: #fff;
-}
-
 .win {
   background-color: var(--color-win);
-}
-
-.win a {
-  color: var(--color-win);
 }
 
 .lose {
   background-color: var(--color-lose);
 }
 
-.lose a {
-  color: var(--color-lose);
-}
