@@ -99,6 +99,10 @@ class Game {
   * @param {boolean} gameWon - Whether or not the user won the game
   */
   gameOver(gameWon) {
+    const keys = document.querySelectorAll('.key');
+    keys.forEach((key) => {
+      key.disabled = true;
+    });
     setTimeout(() => {
       let message;
       const overlay = document.getElementById('overlay');
